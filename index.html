@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ARPradar: free network scanner for Mac</title>
-<meta name="description" content="ARPradar sweeps a network in about ten seconds and names every device: maker, open ports, shares. Free for macOS.">
+<title>ARPradar: free network scanner for Mac and Windows</title>
+<meta name="description" content="ARPradar sweeps a network in about ten seconds and names every device: maker, open ports, shares. Free for Mac and Windows.">
 <meta property="og:title" content="ARPradar: free network scanner for Mac">
-<meta property="og:description" content="Every device on the subnet, named. Free for macOS 14 and later.">
+<meta property="og:description" content="Every device on the subnet, named. Free for Mac and Windows.">
 <meta property="og:url" content="https://arpradar.com/">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0e1b2c">
@@ -159,7 +159,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
 
     <div class="hero-grid" id="top">
       <div>
-        <div class="eyebrow">Free network scanner for macOS</div>
+        <div class="eyebrow">Free network scanner for Mac and Windows</div>
         <h1>Every device on the subnet, <em>named</em>.</h1>
         <p class="lede">ARPradar sweeps a network in about ten seconds and tells you what each address is: its name, its maker, its open ports and shares. Save the scan, come back next month, and see what changed.</p>
         <div class="cta">
@@ -167,9 +167,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Download for Mac
           </a>
+          <a class="btn btn-primary" href="https://github.com/saoneill01-a11y/arpradar/releases/latest/download/ARPradar-Windows-setup.exe">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Download for Windows
+          </a>
           <a class="btn btn-ghost" href="#install">How to install</a>
         </div>
-        <div class="fine">v0.3 · macOS 14 Sonoma or later · Apple silicon and Intel · free, no account</div>
+        <div class="fine">Mac: v0.3 · macOS 14 or later · Apple silicon and Intel<br>Windows: v0.9 (early) · Windows 10 and 11, 64-bit · free, no account</div>
       </div>
 
       <div class="scope">
@@ -235,7 +239,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
   </div></section>
 
   <section id="install"><div class="wrap">
-    <div class="sec-head"><h2>Install</h2><p>About a minute. No installer, no account.</p></div>
+    <div class="sec-head"><h2>Install on a Mac</h2><p>About a minute. No installer, no account.</p></div>
     <div class="install">
       <ol class="steps">
         <li><b>Download</b><span>Get <span class="path">ARPradar.zip</span> from the latest release and open it.</span></li>
@@ -249,12 +253,26 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
         <p>For Wi-Fi network names, macOS also asks for Location. ARPradar never reads your location; it's how macOS guards Wi-Fi names.</p>
       </div>
     </div>
-    <div class="specs"><span><b>macOS</b> 14 Sonoma or later</span><span><b>Chips</b> Apple silicon and Intel</span><span><b>Price</b> free</span><span><b>Data</b> stays on your Mac</span><span><b>Windows / Linux</b> planned</span></div>
+    <div class="specs"><span><b>macOS</b> 14 Sonoma or later</span><span><b>Chips</b> Apple silicon and Intel</span><span><b>Price</b> free</span><span><b>Data</b> stays on your Mac</span><span><b>Linux</b> planned</span></div>
+
+    <div class="sec-head" style="margin-top:56px"><h2>Install on Windows</h2><p>An early version: most of the Mac app's features, still being tested.</p></div>
+    <div class="install">
+      <ol class="steps">
+        <li><b>Download</b><span>Get <span class="path">ARPradar-Windows-setup.exe</span> from the latest release.</span></li>
+        <li><b>Run the installer</b><span>Double-click it and follow the steps. It installs for you only, no admin needed.</span></li>
+        <li><b>Scan</b><span>Open ARPradar from the Start menu and press Scan.</span></li>
+      </ol>
+      <div class="note">
+        <h3>“Windows protected your PC”</h3>
+        <p>Until the app is signed, SmartScreen warns you once. Click <b>More info</b>, then <b>Run anyway</b>.</p>
+      </div>
+    </div>
+    <div class="specs"><span><b>Windows</b> 10 and 11, 64-bit</span><span><b>Price</b> free</span><span><b>Data</b> stays on your PC</span></div>
   </div></section>
 
   <section class="dl"><div class="wrap">
     <div><h2>Take a look at your network.</h2><p>It's probably got more on it than you think.</p></div>
-    <a class="btn btn-primary" href="https://github.com/saoneill01-a11y/arpradar/releases/latest/download/ARPradar.zip">Download for Mac</a>
+    <div class="cta"><a class="btn btn-primary" href="https://github.com/saoneill01-a11y/arpradar/releases/latest/download/ARPradar.zip">Download for Mac</a><a class="btn btn-primary" href="https://github.com/saoneill01-a11y/arpradar/releases/latest/download/ARPradar-Windows-setup.exe">Download for Windows</a></div>
   </div></section>
 </main>
 
