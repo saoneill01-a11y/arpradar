@@ -5,16 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ARPradar: free network scanner for Mac and Windows</title>
 <meta name="description" content="ARPradar sweeps a network in about ten seconds and names every device: maker, open ports, shares. Free for Mac and Windows.">
-<meta property="og:title" content="ARPradar: free network scanner for Mac">
+<meta property="og:title" content="ARPradar: free network scanner for Mac and Windows">
 <meta property="og:description" content="Every device on the subnet, named. Free for Mac and Windows.">
 <meta property="og:url" content="https://arpradar.com/">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://arpradar.com/social.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0e1b2c">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://arpradar.com/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="fonts.css">
 <style>
 :root{color-scheme:light}
 html{scroll-behavior:smooth}
@@ -108,6 +110,7 @@ section + section{border-top:1px solid var(--line)}
 .toollist b{font-family:var(--f-display);font-weight:700;font-stretch:104%}
 .toollist span{color:var(--muted)}
 .kbd{font-family:var(--f-mono);font-size:12px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 5px;color:var(--muted);margin-left:6px}
+.toolnote{font-family:var(--f-mono);font-size:13px;color:var(--muted);margin:14px 0 0}
 .orgs{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 24px}
 .orgs h3{font-size:20px;font-weight:700}
 .orgs p{color:var(--muted);margin:8px 0 14px}
@@ -123,6 +126,7 @@ section + section{border-top:1px solid var(--line)}
 .steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;border:2px solid var(--accent);color:var(--accent);font-family:var(--f-display);font-weight:800;display:grid;place-items:center}
 .steps b{display:block;font-family:var(--f-display);font-weight:700;font-size:18px}
 .steps span{color:var(--muted)}
+.steps .check{display:block;font-size:14px;margin-top:4px}
 .note{background:var(--tint);border-radius:12px;padding:20px 22px}
 .note h3{font-size:17px;font-weight:700}
 .note p{margin:8px 0 0;color:var(--muted);font-size:15px}
@@ -163,17 +167,17 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
         <h1>Every device on the subnet, <em>named</em>.</h1>
         <p class="lede">ARPradar sweeps a network in about ten seconds and tells you what each address is: its name, its maker, its open ports and shares. Save the scan, come back next month, and see what changed.</p>
         <div class="cta">
-          <a class="btn btn-primary" href="https://github.com/saoneill01-a11y/arpradar/releases/latest/download/ARPradar.zip">
+          <a class="btn btn-primary" data-os="mac" href="https://github.com/saoneill01-a11y/arpradar/releases/latest/download/ARPradar.zip">
             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Download for Mac
           </a>
-          <a class="btn btn-primary" href="https://github.com/saoneill01-a11y/arpradar/releases/latest/download/ARPradar-Windows-setup.exe">
+          <a class="btn btn-primary" data-os="win" href="https://github.com/saoneill01-a11y/arpradar/releases/latest/download/ARPradar-Windows-setup.exe">
             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Download for Windows
           </a>
           <a class="btn btn-ghost" href="#install">How to install</a>
         </div>
-        <div class="fine">Mac: v0.3 · macOS 14 or later · Apple silicon and Intel<br>Windows: v0.9 (early) · Windows 10 and 11, 64-bit · free, no account<br>Downloading means you agree to the <a href="license.html" style="color:inherit;text-decoration:underline">License Agreement</a>.</div>
+        <div class="fine">Mac: <span id="v-mac">v0.3</span> · macOS 14 or later · Apple silicon and Intel<br>Windows: <span id="v-win">v0.9</span> (early) · Windows 10 and 11, 64-bit · free, no account<br>Downloading means you agree to the <a href="license.html" style="color:inherit;text-decoration:underline">License Agreement</a>.</div>
       </div>
 
       <div class="scope">
@@ -214,6 +218,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
   <section id="tools"><div class="wrap">
     <div class="sec-head"><h2>The rest of the toolkit</h2><p>The checks you'd otherwise open five apps for, in one Tools menu.</p></div>
     <div class="tools">
+      <div>
       <ul class="toollist">
         <li><b>Ping<span class="kbd">⌘1</span></b><span>Live response times and loss, with a running graph.</span></li>
         <li><b>Traceroute<span class="kbd">⌘2</span></b><span>Every hop to a host, with names and times.</span></li>
@@ -222,6 +227,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
         <li><b>Speed Test<span class="kbd">⌘7</span></b><span>Download, upload and responsiveness.</span></li>
         <li><b>Subnet Calculator<span class="kbd">⌘8</span></b><span>Type an address and mask, then scan the range it gives.</span></li>
       </ul>
+      <p class="toolnote">Wi-Fi Analyzer and Subnet Calculator appear when Advanced is switched on (top right of the window).</p>
+      </div>
       <div class="orgs">
         <h3>Keep it per client</h3>
         <p>Group saved scans under an organization. A site survey runs the lot in one go and files the results together, ready to export to Excel.</p>
@@ -242,7 +249,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
     <div class="sec-head"><h2>Install on a Mac</h2><p>About a minute. No installer, no account.</p></div>
     <div class="install">
       <ol class="steps">
-        <li><b>Download</b><span>Get <span class="path">ARPradar.zip</span> from the latest release and open it.</span></li>
+        <li><b>Download</b><span>Get <span class="path">ARPradar.zip</span> from the latest release and open it.</span><span class="check">Check the download: the SHA-256 is in the release notes.</span></li>
         <li><b>Move it to Applications</b><span>Drag ARPradar into your Applications folder.</span></li>
         <li><b>Open it the first time</b><span>Double-click ARPradar. If macOS stops it, see the note on the right.</span></li>
         <li><b>Allow Local Network</b><span>Click Allow when macOS asks, so ARPradar can reach devices on your network.</span></li>
@@ -250,15 +257,16 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
       <div class="note">
         <h3>“ARPradar can’t be opened”</h3>
         <p>Until the app is signed by Apple, macOS asks you to confirm it once. Open <span class="path">System Settings › Privacy &amp; Security</span>, scroll down, and click <b>Open Anyway</b> next to ARPradar.</p>
+        <p>That step exists because Apple hasn't checked this app yet, so macOS can't vouch for it; the SHA-256 in the release notes lets you check the file yourself.</p>
         <p>For Wi-Fi network names, macOS also asks for Location. ARPradar never reads your location; it's how macOS guards Wi-Fi names.</p>
       </div>
     </div>
-    <div class="specs"><span><b>macOS</b> 14 Sonoma or later</span><span><b>Chips</b> Apple silicon and Intel</span><span><b>Price</b> free</span><span><b>Data</b> stays on your Mac</span><span><b>Linux</b> planned</span></div>
+    <div class="specs"><span><b>macOS</b> 14 Sonoma or later</span><span><b>Chips</b> Apple silicon and Intel</span><span><b>Price</b> free</span><span><b>Data</b> stays on your Mac, except the lookups listed in the <a href="license.html#data">license</a></span><span><b>Linux</b> planned</span></div>
 
     <div class="sec-head" style="margin-top:56px"><h2>Install on Windows</h2><p>An early version: most of the Mac app's features, still being tested.</p></div>
     <div class="install">
       <ol class="steps">
-        <li><b>Download</b><span>Get <span class="path">ARPradar-Windows-setup.exe</span> from the latest release.</span></li>
+        <li><b>Download</b><span>Get <span class="path">ARPradar-Windows-setup.exe</span> from the latest release.</span><span class="check">Check the download: the SHA-256 is in the release notes.</span></li>
         <li><b>Run the installer</b><span>Double-click it and follow the steps. It installs for you only, no admin needed.</span></li>
         <li><b>Scan</b><span>Open ARPradar from the Start menu and press Scan.</span></li>
       </ol>
@@ -267,12 +275,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
         <p>Until the app is signed, SmartScreen warns you once. Click <b>More info</b>, then <b>Run anyway</b>.</p>
       </div>
     </div>
-    <div class="specs"><span><b>Windows</b> 10 and 11, 64-bit</span><span><b>Price</b> free</span><span><b>Data</b> stays on your PC</span></div>
+    <div class="specs"><span><b>Windows</b> 10 and 11, 64-bit</span><span><b>Price</b> free</span><span><b>Data</b> stays on your PC, except the lookups listed in the <a href="license.html#data">license</a></span></div>
   </div></section>
 
   <section class="dl"><div class="wrap">
     <div><h2>Take a look at your network.</h2><p>It's probably got more on it than you think.</p></div>
-    <div class="cta"><a class="btn btn-primary" href="https://github.com/saoneill01-a11y/arpradar/releases/latest/download/ARPradar.zip">Download for Mac</a><a class="btn btn-primary" href="https://github.com/saoneill01-a11y/arpradar/releases/latest/download/ARPradar-Windows-setup.exe">Download for Windows</a></div>
+    <div class="cta"><a class="btn btn-primary" data-os="mac" href="https://github.com/saoneill01-a11y/arpradar/releases/latest/download/ARPradar.zip">Download for Mac</a><a class="btn btn-primary" data-os="win" href="https://github.com/saoneill01-a11y/arpradar/releases/latest/download/ARPradar-Windows-setup.exe">Download for Windows</a></div>
   </div></section>
 </main>
 
@@ -294,7 +302,44 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
     x.restore();
   }
   if(still){draw(-0.5);return;}
-  var t0=performance.now(); (function loop(t){draw(((t-t0)/3000)*Math.PI*2-0.5);requestAnimationFrame(loop);})(t0);
+  /* Animate only while the canvas is on screen and the tab is visible. */
+  var t0=performance.now(), raf=0, onScreen=true;
+  function loop(t){draw(((t-t0)/3000)*Math.PI*2-0.5);raf=requestAnimationFrame(loop);}
+  function start(){if(!raf&&onScreen&&!document.hidden)raf=requestAnimationFrame(loop);}
+  function stop(){if(raf){cancelAnimationFrame(raf);raf=0;}}
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){onScreen=es[0].isIntersecting;onScreen?start():stop();}).observe(c);}
+  document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});
+  start();
+})();
+
+/* Download buttons: make the visitor's own OS the primary button, the other a ghost. Unknown OS keeps both primary. */
+(function(){
+  try{
+    var p=(navigator.userAgentData&&navigator.userAgentData.platform)||navigator.platform||navigator.userAgent||'';
+    var os=/mac/i.test(p)?'mac':/win/i.test(p)?'win':null;
+    if(!os)return;
+    document.querySelectorAll('.btn[data-os]').forEach(function(b){
+      var mine=b.getAttribute('data-os')===os;
+      b.classList.toggle('btn-primary',mine); b.classList.toggle('btn-ghost',!mine);
+    });
+  }catch(e){}
+})();
+
+/* Version numbers from the latest GitHub release; the typed text stays if anything fails. */
+(function(){
+  try{
+    if(!window.fetch)return;
+    fetch('https://api.github.com/repos/saoneill01-a11y/arpradar/releases/latest',{headers:{Accept:'application/vnd.github+json'}})
+      .then(function(r){return r.ok?r.json():null})
+      .then(function(d){
+        if(!d)return;
+        var name=String(d.name||'')+' '+String(d.tag_name||'');
+        var m=/(\d+\.\d+\.\d+) \(Mac\)/.exec(name), w=/(\d+\.\d+\.\d+) \(Windows/.exec(name);
+        var em=document.getElementById('v-mac'), ew=document.getElementById('v-win');
+        if(m&&em)em.textContent='v'+m[1];
+        if(w&&ew)ew.textContent='v'+w[1];
+      }).catch(function(){});
+  }catch(e){}
 })();
 </script>
 </body>

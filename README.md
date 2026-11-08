@@ -8,6 +8,7 @@ ARPradar sweeps a network in about ten seconds and names every device: maker, op
 
 ## Install
 1. Download `ARPradar.zip` from the [latest release](https://github.com/saoneill01-a11y/arpradar/releases/latest) and open it.
+   To check the download, compare its SHA-256 (`shasum -a 256 ARPradar.zip`) with the one in the release notes.
 2. Drag ARPradar into Applications and open it.
 3. If macOS says it can't be opened: System Settings › Privacy & Security › **Open Anyway**. (Needed until the app is signed by Apple.)
 4. Click **Allow** for Local Network.
