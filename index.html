@@ -177,7 +177,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
           </a>
           <a class="btn btn-ghost" href="#install">How to install</a>
         </div>
-        <div class="fine">Mac: <span id="v-mac">v0.3</span> · macOS 14 or later · Apple silicon and Intel<br>Windows: <span id="v-win">v0.9</span> (early) · Windows 10 and 11, 64-bit · free, no account<br>Downloading means you agree to the <a href="license.html" style="color:inherit;text-decoration:underline">License Agreement</a>.</div>
+        <div class="fine">Mac: <span id="v-mac">v1.0.0</span> · macOS 14 or later · Apple silicon and Intel<br>Windows: <span id="v-win">v1.0.0</span> · Windows 10 and 11, 64-bit · free, no account<br>Downloading means you agree to the <a href="license.html" style="color:inherit;text-decoration:underline">License Agreement</a>.</div>
       </div>
 
       <div class="scope">
@@ -263,7 +263,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
     </div>
     <div class="specs"><span><b>macOS</b> 14 Sonoma or later</span><span><b>Chips</b> Apple silicon and Intel</span><span><b>Price</b> free</span><span><b>Data</b> stays on your Mac, except the lookups listed in the <a href="license.html#data">license</a></span><span><b>Linux</b> planned</span></div>
 
-    <div class="sec-head" style="margin-top:56px"><h2>Install on Windows</h2><p>An early version: most of the Mac app's features, still being tested.</p></div>
+    <div class="sec-head" style="margin-top:56px"><h2>Install on Windows</h2><p>The same features as the Mac app, with the same version number.</p></div>
     <div class="install">
       <ol class="steps">
         <li><b>Download</b><span>Get <span class="path">ARPradar-Windows-setup.exe</span> from the latest release.</span><span class="check">Check the download: the SHA-256 is in the release notes.</span></li>
@@ -335,6 +335,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-bet
         if(!d)return;
         var name=String(d.name||'')+' '+String(d.tag_name||'');
         var m=/(\d+\.\d+\.\d+) \(Mac\)/.exec(name), w=/(\d+\.\d+\.\d+) \(Windows/.exec(name);
+        var both=/(\d+\.\d+\.\d+) \(Mac and Windows\)/.exec(name); if(both){m=both;w=both;}
         var em=document.getElementById('v-mac'), ew=document.getElementById('v-win');
         if(m&&em)em.textContent='v'+m[1];
         if(w&&ew)ew.textContent='v'+w[1];
